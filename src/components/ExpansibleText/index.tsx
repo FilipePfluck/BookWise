@@ -11,7 +11,7 @@ interface ExpansibleTextProps {
 
 export const ExpansibleText = ({
   text,
-  height = '96px',
+  height = '20',
   amountOfVisibleCharacters = 230,
 }: ExpansibleTextProps) => {
   const textContainerRef = useRef(null)
@@ -27,11 +27,11 @@ export const ExpansibleText = ({
 
   console.log({ hasOverflowed })
 
-  const textContainer = cva('relative h-full', {
+  const textContainer = cva(`relative h-full`, {
     variants: {
       isExpanded: {
         true: ['max-h-full'],
-        false: [`max-h-[${height}]`],
+        false: [`max-h-${height}`],
       },
     },
   })
@@ -49,7 +49,7 @@ export const ExpansibleText = ({
           </>
         )}
       </p>
-      <p className="absolute top-0 invisible">{text}</p>
+      <p className=" absolute top-0 invisible">{text}</p>
     </div>
   )
 }

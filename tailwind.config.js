@@ -26,7 +26,10 @@ module.exports = {
           800: '#0E1116',
         },
       },
+      gridTemplateColumns: {
+        minMax: 'repeat(auto-fit, minmax(280px, 1fr))',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss'), require('autoprefixer')],
 }
