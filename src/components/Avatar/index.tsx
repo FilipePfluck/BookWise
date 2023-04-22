@@ -3,7 +3,7 @@ import * as S from './styles'
 interface AvatarProps {
   src: string
   name: string
-  size?: 'sm' | 'md'
+  size?: 'sm' | 'md' | 'lg'
 }
 
 export const Avatar = ({ name, src, size = 'md' }: AvatarProps) => {

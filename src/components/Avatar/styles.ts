@@ -8,6 +8,7 @@ export const authorAvatarBorder = cva(
       size: {
         sm: `h-8 w-8`,
         md: `h-10 w-10`,
+        lg: `h-[72px] w-[72px]`,
       },
     },
     defaultVariants: {
@@ -21,6 +22,7 @@ export const avatarImage = cva(`rounded-full`, {
     size: {
       sm: `h-[30px] w-[30px]`,
       md: `h-[38px] w-[38px]`,
+      lg: `h-[68px] w-[68px]`,
     },
   },
   defaultVariants: {
