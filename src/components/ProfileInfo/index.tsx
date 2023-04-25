@@ -2,40 +2,37 @@ import { BookOpen } from 'phosphor-react'
 import { Avatar } from '../Avatar'
 
 import * as S from './styles'
-import { createCVAComponent } from '@/utils/CVAComponent'
 
 const ProfileItem = () => {
   return (
-    <div className={S.profileItemContainer()}>
-      <BookOpen className={S.profileItemIcon()} />
-      <div className={S.profileItemContent()}>
-        <strong className={S.itemNumber()}>853</strong>
-        <p className={S.itemStat()}>Páginas lidas</p>
-      </div>
-    </div>
+    <S.ProfileItemContainer>
+      <BookOpen className="text-green-100 h-8 w-8" />
+      <S.ProfileItemContent>
+        <S.ItemNumber>853</S.ItemNumber>
+        <S.ItemStat>Páginas lidas</S.ItemStat>
+      </S.ProfileItemContent>
+    </S.ProfileItemContainer>
   )
 }
 
-const ProfileInfoContainer = createCVAComponent('div', S.profileInfoContainer)
-
 export const ProfileInfo = () => {
   return (
-    <ProfileInfoContainer>
-      <div className={S.avatarAndName()}>
+    <S.ProfileInfoContainer>
+      <S.AvatarAndName>
         <Avatar
           src="https://avatars.githubusercontent.com/u/124596139?v=4"
           name="Filipe Pfluck"
           size="lg"
         />
-        <h2 className={S.name()}>Filipe Pfluck</h2>
-        <p className={S.joinedOn()}>Membro desde 2019</p>
-      </div>
-      <div className={S.profileItemsContainer()}>
+        <S.Name>Filipe Pfluck</S.Name>
+        <S.JoinedOn>Membro desde 2019</S.JoinedOn>
+      </S.AvatarAndName>
+      <S.ProfileItemsContainer>
         <ProfileItem />
         <ProfileItem />
         <ProfileItem />
         <ProfileItem />
-      </div>
-    </ProfileInfoContainer>
+      </S.ProfileItemsContainer>
+    </S.ProfileInfoContainer>
   )
 }

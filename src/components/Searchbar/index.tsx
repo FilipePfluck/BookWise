@@ -4,13 +4,9 @@ import * as S from './styles'
 
 export const Searchbar = () => {
   return (
-    <label htmlFor="search" className={S.inputContainer()}>
-      <input
-        id="search"
-        className={S.input()}
-        placeholder="Buscar livro ou autor"
-      />
-      <MagnifyingGlass className={S.icon()} />
-    </label>
+    <S.InputContainer htmlFor="search">
+      <S.Input id="search" placeholder="Buscar livro ou autor" />
+      <MagnifyingGlass className="text-gray-500 text-xl" />
+    </S.InputContainer>
   )
 }

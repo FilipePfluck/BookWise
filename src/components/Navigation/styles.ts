@@ -1,15 +1,19 @@
+import { createCVAComponent } from '@/utils/CVAComponent'
 import { cva } from 'class-variance-authority'
 
-export const navigationContainer = cva(
-  `fixed left-1 top-1 bottom-1 
-  flex flex-col rounded-xl  
-  my-5 ml-5 p-12 
-  bg-cover bg-no-repeat`,
+export const NavigationContainer = createCVAComponent(
+  'div',
+  cva(
+    `fixed left-1 top-1 bottom-1 
+    flex flex-col rounded-xl  
+    my-5 ml-5 p-12 
+    bg-cover bg-no-repeat`,
+  ),
 )
 
-export const navigationItem = cva(
-  `flex items-center pl-5 gap-3 py-2 relative`,
-  {
+export const NavigationItem = createCVAComponent(
+  'div',
+  cva(`flex items-center pl-5 gap-3 py-2 relative`, {
     variants: {
       isSelected: {
         true: `
@@ -26,5 +30,5 @@ export const navigationItem = cva(
     defaultVariants: {
       isSelected: false,
     },
-  },
+  }),
 )

@@ -11,12 +11,12 @@ interface SignOutProps {
 
 export const SignOut = ({ name, src, className }: SignOutProps) => {
   return (
-    <div className={S.signOutContainer({ className })}>
+    <S.SignOutContainer variants={{ className }}>
       <Avatar src={src} name={name} size="sm" />
-      <p className={S.name()}>Filipe Pfluck</p>
-      <button className={S.signOutButton()}>
+      <S.Name>Filipe Pfluck</S.Name>
+      <S.SignOutButton>
         <SignOutIcon />
-      </button>
-    </div>
+      </S.SignOutButton>
+    </S.SignOutContainer>
   )
 }

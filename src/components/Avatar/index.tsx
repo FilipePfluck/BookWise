@@ -8,8 +8,8 @@ interface AvatarProps {
 
 export const Avatar = ({ name, src, size = 'md' }: AvatarProps) => {
   return (
-    <div className={S.authorAvatarBorder({ size })}>
-      <img src={src} alt={name} className={S.avatarImage({ size })} />
-    </div>
+    <S.AvatarBorder variants={{ size }}>
+      <S.AvatarImage src={src} alt={name} variants={{ size }} />
+    </S.AvatarBorder>
   )
 }

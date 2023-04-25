@@ -1,9 +1,9 @@
-import Link from 'next/link'
 import { Binoculars, ChartLineUp, User } from 'phosphor-react'
 import { ReactElement } from 'react'
 
 import * as S from './styles'
 import { SignOut } from '../SignOut'
+import Link from 'next/link'
 
 interface NavigationItemProps {
   icon: ReactElement
@@ -14,9 +14,11 @@ interface NavigationItemProps {
 const NavigationItem = ({ icon, name, isSelected }: NavigationItemProps) => {
   return (
     <li>
-      <Link className={S.navigationItem({ isSelected })} href="">
-        {icon}
-        <p>{name}</p>
+      <Link href="">
+        <S.NavigationItem>
+          {icon}
+          <p>{name}</p>
+        </S.NavigationItem>
       </Link>
     </li>
   )
@@ -24,10 +26,7 @@ const NavigationItem = ({ icon, name, isSelected }: NavigationItemProps) => {
 
 export const Navigation = () => {
   return (
-    <aside
-      className={S.navigationContainer()}
-      style={{ backgroundImage: 'url(/sidebar-bg.png)' }}
-    >
+    <S.NavigationContainer style={{ backgroundImage: 'url(/sidebar-bg.png)' }}>
       <img src="/Logo.png" alt="" />
       <ul className="mt-16 flex flex-col gap-5">
         <NavigationItem
@@ -47,6 +46,6 @@ export const Navigation = () => {
         name="Filipe Pfluck"
         className="mt-auto"
       />
-    </aside>
+    </S.NavigationContainer>
   )
 }

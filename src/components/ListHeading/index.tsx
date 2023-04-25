@@ -14,14 +14,14 @@ export const ListHeading = ({
   seeMoreButtonTarget = '/',
 }: ListHeadingProps) => {
   return (
-    <div className={S.ListHeadingContainer()}>
-      <p className={S.ListHeadingTitle()}>{title}</p>
+    <S.ListHeadingContainer>
+      <S.ListHeadingTitle>{title}</S.ListHeadingTitle>
       {seeMoreButtonLabel && (
-        <a className={S.ListHeadingLink()} href={seeMoreButtonLabel}>
+        <S.ListHeadingLink href={seeMoreButtonLabel}>
           {seeMoreButtonLabel}
           <CaretRight />
-        </a>
+        </S.ListHeadingLink>
       )}
-    </div>
+    </S.ListHeadingContainer>
   )
 }

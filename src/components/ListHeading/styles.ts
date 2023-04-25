@@ -1,11 +1,17 @@
+import { createCVAComponent } from '@/utils/CVAComponent'
 import { cva } from 'class-variance-authority'
 
-export const ListHeadingContainer = cva(
-  `flex items-center justify-between mb-4 h-[36px]`,
+export const ListHeadingContainer = createCVAComponent(
+  'div',
+  cva(`flex items-center justify-between mb-4 h-[36px]`),
 )
 
-export const ListHeadingTitle = cva(`text-gray-100 text-sm`)
+export const ListHeadingTitle = createCVAComponent(
+  'p',
+  cva(`text-gray-100 text-sm`),
+)
 
-export const ListHeadingLink = cva(
-  `p-2 text-purple-100 bold text-sm flex items-center gap-3`,
+export const ListHeadingLink = createCVAComponent(
+  'a',
+  cva(`p-2 text-purple-100 bold text-sm flex items-center gap-3`),
 )

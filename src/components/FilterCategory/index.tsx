@@ -18,11 +18,11 @@ export const FilterCategory = ({
   }
 
   return (
-    <button
-      className={S.filterCategory({ isSelected })}
+    <S.FilterCategoryButton
+      variants={{ isSelected }}
       onClick={toggleIsSelected}
     >
       {name}
-    </button>
+    </S.FilterCategoryButton>
   )
 }

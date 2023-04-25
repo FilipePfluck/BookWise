@@ -40,12 +40,12 @@ export const RatingCard = ({
   }, [])
 
   return (
-    <section className={S.ratingCardContainer({ isMine, className })}>
+    <S.RatingCardContainer variants={{ isMine, className }}>
       {!isMine && (
-        <header className={S.ratingCardHeader()}>
+        <S.RatingCardHeader>
           <RatingPoster src={poster.src} name={poster.name} date={postedDate} />
           <Stars number={rate} />
-        </header>
+        </S.RatingCardHeader>
       )}
       <div className="w-full flex gap-5">
         <img
@@ -63,6 +63,6 @@ export const RatingCard = ({
           {showText && <ExpansibleText text={review} />}
         </div>
       </div>
-    </section>
+    </S.RatingCardContainer>
   )
 }
