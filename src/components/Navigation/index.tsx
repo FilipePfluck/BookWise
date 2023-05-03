@@ -1,5 +1,5 @@
 import { Binoculars, ChartLineUp, User } from 'phosphor-react'
-import { ReactElement } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 
 import * as S from './styles'
 import { SignOut } from '../SignOut'
@@ -24,7 +24,17 @@ const NavigationItem = ({ icon, name, isSelected }: NavigationItemProps) => {
   )
 }
 
+const Test = () => {
+  useEffect(() => {
+    console.log('test rendered for the first time')
+  }, [])
+
+  return <p>Test</p>
+}
+
 export const Navigation = () => {
+  const [, setIsTrue] = useState(false)
+
   return (
     <S.NavigationContainer style={{ backgroundImage: 'url(/sidebar-bg.png)' }}>
       <img src="/Logo.png" alt="" />
@@ -40,6 +50,12 @@ export const Navigation = () => {
         />
         <NavigationItem icon={<User className="w-6 h-6" />} name="Perfil" />
       </ul>
+
+      <S.Test variants={{ size: 'lg', color: 'blue' }}>
+        <Test />
+      </S.Test>
+
+      <button onClick={() => setIsTrue((state) => !state)}>A</button>
 
       <SignOut
         src="https://avatars.githubusercontent.com/u/62773200?v=4"

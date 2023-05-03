@@ -9,12 +9,6 @@ export const useIsOverflow = (ref: MutableRefObject<any>) => {
     const trigger = () => {
       const hasOverflow = current.scrollHeight > current.clientHeight
 
-      console.log({
-        hasOverflow,
-        scrollHeight: current.scrollHeight,
-        clientHeight: current.clientHeight,
-      })
-
       setHasOverflowed(hasOverflow)
     }
 

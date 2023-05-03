@@ -1,4 +1,4 @@
-import { createCVAComponent } from '@/utils/CVAComponent'
+import { CVAComponent, createCVAComponent } from '@/utils/CVAComponent'
 import { cva } from 'class-variance-authority'
 
 export const NavigationContainer = createCVAComponent(
@@ -32,3 +32,21 @@ export const NavigationItem = createCVAComponent(
     },
   }),
 )
+
+export const Test = CVAComponent('div', {
+  base: 'h-4 w-4',
+  variants: {
+    color: {
+      red: 'bg-red-200 hover:bg-red-100 hover:h-10 hover:w-20',
+      blue: 'bg-blue-200 hover:bg-blue-100 hover:h-10 hover:w-20',
+    },
+    size: {
+      sm: '',
+      md: '',
+      lg: '',
+    },
+  },
+  defaultVariants: {
+    color: 'blue',
+  },
+})

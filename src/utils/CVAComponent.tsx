@@ -1,10 +1,75 @@
 import { ComponentProps, ReactHTML, createElement } from 'react'
-import { VariantProps } from 'class-variance-authority'
+import { VariantProps as CVAVariantProps, cva } from 'class-variance-authority'
 import {
   ClassProp,
   ClassValue,
   StringToBoolean,
 } from 'class-variance-authority/dist/types'
+
+interface Variants {
+  [k: string]: {
+    [k: string]: string
+  }
+}
+
+type VariantsToValues<T extends Variants> = {
+  [K in keyof T]: keyof T[K]
+}
+
+type ComponentPropsWithVariants<
+  V extends Variants,
+  E extends keyof ReactHTML,
+> = {
+  variants?: Partial<VariantsToValues<V>>
+} & ComponentProps<E>
+
+interface CVA<V extends Variants> {
+  base?: string | string[]
+  variants?: V
+  defaultVariants?: Partial<VariantsToValues<V>>
+}
+
+export const CVAComponent = <E extends keyof ReactHTML, V extends Variants>(
+  element: E,
+  cvaObject: CVA<V>,
+  displayName?: string,
+) => {
+  const {
+    base = '',
+    variants: requestVariants,
+    defaultVariants = {},
+  } = cvaObject
+
+  const _variants = requestVariants ?? {}
+
+  const createClassname = cva(base, { variants: _variants })
+
+  const Component = ({
+    children,
+    className,
+    variants,
+    ...props
+  }: ComponentPropsWithVariants<NonNullable<typeof requestVariants>, E>) => {
+    const mergedVariants = { ...defaultVariants, ...variants }
+    const cvaClassName = createClassname({ className, ...mergedVariants })
+
+    console.log({ cvaClassName })
+
+    return createElement(
+      element,
+      { className: cvaClassName, ...props },
+      children,
+    )
+  }
+
+  Component.displayName = displayName
+
+  return Component
+}
+
+//
+//
+//
 
 type ConfigSchema = Record<string, Record<string, ClassValue>>
 
@@ -25,7 +90,7 @@ export const createCVAComponent = <E extends keyof ReactHTML>(
     children,
     variants,
     ...props
-  }: { variants?: VariantProps<typeof cvaClass> } & ComponentProps<E>) => {
+  }: { variants?: CVAVariantProps<typeof cvaClass> } & ComponentProps<E>) => {
     return createElement(
       element,
       { className: cvaClass(variants), ...props },
@@ -37,3 +102,7 @@ export const createCVAComponent = <E extends keyof ReactHTML>(
 
   return CVAComponent
 }
+
+//
+//
+//
